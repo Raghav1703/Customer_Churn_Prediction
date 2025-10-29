@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Churn Prediction</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #0a6ccf;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .card {
+      width: 90%;
+      max-width: 900px;
+      height: 90vh; /* keeps the form visible on smaller screens */
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      background-color: white;
+      overflow-y: auto; /* scrolls smoothly if form is long */
+    }
+    .btn-custom {
+      background-color: #0a49d1;
+      color: white;
+      font-weight: 600;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Customer Churn Prediction</h2>
+
+    <form action="/predict" method="POST" class="row g-3">
+
+      <div class="col-md-6"><input name="gender" class="form-control" placeholder="Male/Female" required></div>
+      <div class="col-md-6"><input name="SeniorCitizen" type="number" class="form-control" placeholder="0 or 1" required></div>
+      <div class="col-md-6"><input name="Partner" class="form-control" placeholder="Yes/No" required></div>
+      <div class="col-md-6"><input name="Dependents" class="form-control" placeholder="Yes/No" required></div>
+      <div class="col-md-6"><input name="tenure" type="number" class="form-control" placeholder="Tenure (months)" required></div>
+      <div class="col-md-6"><input name="PhoneService" class="form-control" placeholder="Yes/No" required></div>
+      <div class="col-md-6"><input name="MultipleLines" class="form-control" placeholder="Yes/No/No phone service" required></div>
+
+      <!-- Internet Service dropdown -->
+      <div class="col-md-6">
+        <label class="form-label">Internet Service</label>
+        <select name="InternetService" class="form-select" required>
+          <option value="DSL">DSL</option>
+          <option value="Fiber optic">Fiber optic</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="col-md-6"><input name="OnlineSecurity" class="form-control" placeholder="Yes/No/No internet service" required></div>
+      <div class="col-md-6"><input name="OnlineBackup" class="form-control" placeholder="Yes/No/No internet service" required></div>
+      <div class="col-md-6"><input name="DeviceProtection" class="form-control" placeholder="Yes/No/No internet service" required></div>
+      <div class="col-md-6"><input name="TechSupport" class="form-control" placeholder="Yes/No/No internet service" required></div>
+      <div class="col-md-6"><input name="StreamingTV" class="form-control" placeholder="Yes/No/No internet service" required></div>
+      <div class="col-md-6"><input name="StreamingMovies" class="form-control" placeholder="Yes/No/No internet service" required></div>
+
+      <!-- Contract dropdown -->
+      <div class="col-md-6">
+        <label class="form-label">Contract</label>
+        <select name="Contract" class="form-select" required>
+          <option value="Month-to-month">Month-to-month</option>
+          <option value="One year">One year</option>
+          <option value="Two year">Two year</option>
+        </select>
+      </div>
+
+      <div class="col-md-6"><input name="PaperlessBilling" class="form-control" placeholder="Yes/No" required></div>
+
+      <!-- Payment Method dropdown -->
+      <div class="col-md-6">
+        <label class="form-label">Payment Method</label>
+        <select name="PaymentMethod" class="form-select" required>
+          <option value="Electronic check">Electronic check</option>
+          <option value="Mailed check">Mailed check</option>
+          <option value="Bank transfer (automatic)">Bank transfer (automatic)</option>
+          <option value="Credit card (automatic)">Credit card (automatic)</option>
+        </select>
+      </div>
+
+      <div class="col-md-6"><input type="number" step="0.01" name="MonthlyCharges" class="form-control" placeholder="Monthly Charges" required></div>
+      <div class="col-md-6"><input type="number" step="0.01" name="TotalCharges" class="form-control" placeholder="Total Charges" required></div>
+
+      <div class="col-12 text-center mt-3">
+        <button type="submit" class="btn btn-custom w-50">Predict</button>
+      </div>
+    </form>
+
+    {% if prediction %}
+    <div class="alert alert-info text-center mt-4 fs-5">{{ prediction }}</div>
+    {% endif %}
+  </div>
+</body>
+</html>

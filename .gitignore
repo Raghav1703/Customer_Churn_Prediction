@@ -1,0 +1,20 @@
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+
+# --- Virtual Environment ---
+venv/
+.env/
+
+# --- Model & Data Files ---
+*.pkl
+*.sav
+*.csv
+
+# --- IDE & OS Files ---
+.vscode/
+.DS_Store
+Thumbs.db
