@@ -29,7 +29,7 @@ This project:
 
 ---
 ## Dashboard Preview
-![Customer Churn Dashboard](images/dashboard.png)
+![Customer Churn Dashboard]([images/dashboard.png](https://github.com/Raghav1703/Customer_Churn_Prediction/blob/main/images/Dashboard.png?raw=true))
 ## Project Structure
 
 ```bash
